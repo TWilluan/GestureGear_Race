@@ -59,7 +59,7 @@ with mp_hands.Hands(
       if len(hand_centers) == 2:
         cv2.line(image, (hand_centers[0][0], hand_centers[0][1]), (hand_centers[1][0], hand_centers[1][1]),
                  (0,255,0), 5)
-        center_x = (hand_centers[0][0] + hand_centers[0][1]) // 2
+        center_x = (hand_centers[0][0] + hand_centers[1][0]) // 2
         center_y = (hand_centers[0][1] + hand_centers[1][1]) // 2
         radius = int(math.sqrt((hand_centers[0][0] - hand_centers[1][0]) ** 2 +
                                (hand_centers[0][1] - hand_centers[1][1]) ** 2) / 2)
