@@ -14,7 +14,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
 #pynbut
-keyboard = Controller
+keyboard = Controller()
 
 
 # For webcam input:
@@ -50,6 +50,7 @@ with mp_hands.Hands(
           [int(hand_landmarks.landmark[9].x * width), 
            int(hand_landmarks.landmark[9].y * height)]
           )
+      
         mp_drawing.draw_landmarks(
             image,
             hand_landmarks,
@@ -64,6 +65,8 @@ with mp_hands.Hands(
         radius = int(math.sqrt((hand_centers[0][0] - hand_centers[1][0]) ** 2 +
                                (hand_centers[0][1] - hand_centers[1][1]) ** 2) / 2)
         cv2.circle(image, (center_x, center_y), radius, (0,255,0), 5)
+        ### moving foward:
+        keyboard.press('w')
         
     # Flip the image horizontally for a selfie-view display.
     cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
